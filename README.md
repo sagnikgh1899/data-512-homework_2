@@ -76,6 +76,8 @@ The below sample codes were referenced for the following tasks and have been pro
 - **wp_areas-no_match.txt** : All areas for which there are no matches and output a list of those areas with each area on a separate line.
 - **wp_scored_city_articles_by_state.csv** : Consolidating the remaining data as instructed into a single CSV file.
 
+**Note**: The schema for **wp_scored_city_articles_by_state.csv** looks like - state (the state, as text), regional_division (the division, as text), population (the total population, as integer), article_title (the page_title, as text), revision_id (the lastrevid, as text), article_quality (the ORES prediction, as text).
+
 #### Intermediate files
 - **API_request_error_log.txt** : This log file is currently empty since we observed 0 failures while making the API request, but we have kept it in case any failures are observed.
 - **request_ores_score_per_article_output.csv** : Storing the output of the API call for the ores score in this .csv.
