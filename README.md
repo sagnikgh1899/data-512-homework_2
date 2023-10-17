@@ -42,16 +42,16 @@ The below sample codes were referenced for the following tasks and have been pro
 ```
 .
 ├── input files/
-│   ├── population_by_states_2022.csv
 │   ├── US States by Region - US Census Bureau.csv
+│   ├── population_by_states_2022.csv
 │   └── us_cities_by_state_SEPT.2023.csv
 ├── intermediate files/
 │   ├── API_request_error_log.txt
 │   ├── request_ores_score_per_article_output.csv
 │   └── request_pageinfo_per_article_output.csv
 ├── output files/
-│   ├── wp_scored_city_articles_by_state.csv
-│   └── wp_areas-no_match.txt
+│   ├── wp_areas-no_match.txt
+│   └── wp_scored_city_articles_by_state.csv
 ├── src/
 │   └── Data_Acquisition_And_Analysis.ipynb
 ├── LICENSE
@@ -59,7 +59,7 @@ The below sample codes were referenced for the following tasks and have been pro
 
 ```
 #### Description
-- **input files** : This folder contains the input datasets (**population_by_states_2022.csv**, **US States by Region - US Census Bureau.csv**, **us_cities_by_state_SEPT.2023.csv**).
+- **input files** : This folder contains the input datasets (**US States by Region - US Census Bureau.csv**, **population_by_states_2022.csv**, **us_cities_by_state_SEPT.2023.csv**).
 - **intermediate files** : This folder contains datasets and log text files generated during program execution. The **API_request_error_log.txt** is currently empty because we encountered zero failures while making API requests. However, we have retained it in case any failures are observed in the future. The **request_pageinfo_per_article_output.csv** file holds the API call responses, and the **request_ores_score_per_article_output.csv** file contains the ORES scores.
 - **output files** : This folder contains the output datasets (**wp_areas-no_match.txt**, **wp_scored_city_articles_by_state.csv**).
 - **src** : A folder containing the **Data_Acquisition_And_Analysis.ipynb** file. It is clearly documented to indicate what is to be done stepwise, containing code as well as information necessary to understand each processing step.
