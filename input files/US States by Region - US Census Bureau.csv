@@ -1,0 +1,64 @@
+REGION,DIVISION,STATE
+Northeast,,
+,New England,
+,,Connecticut
+,,Maine
+,,Massachusetts
+,,New Hampshire
+,,Rhode Island
+,,Vermont
+,Middle Atlantic,
+,,New Jersey
+,,New York
+,,Pennsylvania
+Midwest,,
+,East North Central,
+,,Illinois
+,,Indiana
+,,Michigan
+,,Ohio
+,,Wisconsin
+,West North Central,
+,,Iowa
+,,Kansas
+,,Minnesota
+,,Missouri
+,,Nebraska
+,,North Dakota
+,,South Dakota
+South,,
+,South Atlantic,
+,,Delaware
+,,Florida
+,,Georgia
+,,Maryland
+,,North Carolina
+,,South Carolina
+,,Virginia
+,,West Virginia
+,East South Central,
+,,Alabama
+,,Kentucky
+,,Mississippi
+,,Tennessee
+,West South Central,
+,,Arkansas
+,,Louisiana
+,,Oklahoma
+,,Texas
+West,,
+,Mountain,
+,,Arizona
+,,Colorado
+,,Idaho
+,,Montana
+,,Nevada
+,,New Mexico
+,,Utah
+,,Wyoming
+,Pacific,
+,,Alaska
+,,California
+,,Hawaii
+,,Oregon
+,,Washington
