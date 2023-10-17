@@ -86,10 +86,10 @@ The below sample codes were referenced for the following tasks and have been pro
 - The page titles in the input .csv files have not been manipulated; thus, some articles had multiple commas (,) in between. However, this did not cause any issues during processing, so we did not include additional preprocessing for that.
 - Cities with duplicate values have been eliminated.
 - States are mapped based on the regional and divisional hierarchy mentioned in **US States by Region - US Census Bureau.csv**.
-- Error log for page info request failing is handled using a .txt file, whereas for the ORES score, it has been printed in the notebook. There are 3 instances where ORES score wasn't captured:
-	- **Kennebunk, Maine 1172898961**
-	- **Fraser, Michigan 1162379459**
-	- **Wildwood Crest, New Jersey 1179887888**
+- Error log for page info request failing is handled using a .txt file, whereas for the ORES score, it has been printed in the notebook. There are 3 instances where ORES score wasn't captured (page_title; lastrevid):
+	- **Kennebunk, Maine; 1172898961**
+	- **Fraser, Michigan; 1162379459**
+	- **Wildwood Crest, New Jersey; 1179887888**
 - The absence of ORES scores for these three articles may be due to various reasons, such as missing data in the source, temporary unavailability of ORES data, or specific issues related to these articles.
 
 ## Reproducing the analysis
