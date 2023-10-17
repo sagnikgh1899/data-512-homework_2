@@ -59,20 +59,21 @@ The below sample codes were referenced for the following tasks and have been pro
 
 ```
 #### Description
-- **input files** : This folder contains the input datasets (population_by_states_2022.csv, US States by Region - US Census Bureau.csv, us_cities_by_state_SEPT.2023.csv).
-- **intermediate files** : This folder contains datasets and log text files generated during program execution. The "API_request_error_log.txt" is currently empty because we encountered zero failures while making API requests. However, we have retained it in case any failures are observed in the future. The "request_pageinfo_per_article_output.csv" file holds the API call responses, and the "request_ores_score_per_article_output.csv" file contains the ORES scores.
-- **output files** : This folder contains the output datasets (wp_areas-no_match.txt, wp_scored_city_articles_by_state.csv).
-- **src** : A folder containing the Data_Acquisition_And_Analysis.ipynb file. It is clearly documented to indicate what is to be done stepwise, containing code as well as information necessary to understand each processing step.
+- **input files** : This folder contains the input datasets (**population_by_states_2022.csv**, **US States by Region - US Census Bureau.csv**, **us_cities_by_state_SEPT.2023.csv**).
+- **intermediate files** : This folder contains datasets and log text files generated during program execution. The **API_request_error_log.txt** is currently empty because we encountered zero failures while making API requests. However, we have retained it in case any failures are observed in the future. The **request_pageinfo_per_article_output.csv** file holds the API call responses, and the **request_ores_score_per_article_output.csv** file contains the ORES scores.
+- **output files** : This folder contains the output datasets (**wp_areas-no_match.txt**, **wp_scored_city_articles_by_state.csv**).
+- **src** : A folder containing the **Data_Acquisition_And_Analysis.ipynb** file. It is clearly documented to indicate what is to be done stepwise, containing code as well as information necessary to understand each processing step.
 - **LICENSE** : a file that contains an MIT LICENSE for sagnikgh1899/data-512-homework_2 repo.
 - **README.md** : a file that contains information to reproduce the analysis, including data descriptions, attributions and provenance information, and descriptions of all relevant resources and documentation (inside and outside the repo) and hyperlinks to those resources. This also contains the goal and learning reflections of the project.
 
 #### Input files
 - **us_cities_by_state_SEPT.2023.csv** : The Wikipedia [Category:Lists of cities in the United States by state](https://en.wikipedia.org/wiki/Category:Lists_of_cities_in_the_United_States_by_state) was crawled to generate a list of Wikipedia article pages about US cities from each state.
 - **population_by_states_2022.csv** : This dataset is drawn from [State Population Totals and Components of Change: 2020-2022](https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html). An Excel file linked to that page contains estimated populations of all US states for 2022.  
+
 **NOTE**: We utilized the **population_by_states_2022.csv** data, creating a mapping of states to regions and divisions based on **US States by Region - US Census Bureau.csv**, which was used to augment the **df_pop** DataFrame. We applied custom sorting, data manipulations, and grouped the data by regional divisions, saving the results as **df_pop_division**. The details are described above in the "Data Sources" section. 
 
 #### Output files
-- **wp_areas-no_match.txt** : all areas for which there are no matches and output a list of those areas with each area on a separate line.
+- **wp_areas-no_match.txt** : All areas for which there are no matches and output a list of those areas with each area on a separate line.
 - **wp_scored_city_articles_by_state.csv** : Consolidating the remaining data as instructed into a single CSV file.
 
 #### Intermediate files
@@ -86,9 +87,9 @@ The below sample codes were referenced for the following tasks and have been pro
 - Cities with duplicate values have been eliminated.
 - States are mapped based on the regional and divisional hierarchy mentioned in **US States by Region - US Census Bureau.csv**.
 - Error log for page info request failing is handled using a .txt file, whereas for the ORES score, it has been printed in the notebook. There are 3 instances where ORES score wasn't captured:
-	- Kennebunk, Maine 1172898961
-	- Fraser, Michigan 1162379459
-	- Wildwood Crest, New Jersey 1179887888
+	- **Kennebunk, Maine 1172898961**
+	- **Fraser, Michigan 1162379459**
+	- **Wildwood Crest, New Jersey 1179887888**
 - The absence of ORES scores for these three articles may be due to various reasons, such as missing data in the source, temporary unavailability of ORES data, or specific issues related to these articles.
 
 ## Reproducing the analysis
@@ -105,21 +106,26 @@ To reproduce this analysis, follow these steps:
 ## Research Implications
 
 **Reflection**
+
 It is essential to understand a data science project both quantitatively and qualitatively. This project provides a comprehensive walkthrough of qualitative analysis by addressing bias in the data. These biases stem from the raw data and are influenced by various factors, such as demographic region, religion, culture, gender, and more. Through this exercise, it becomes evident that the number of articles per capita may not be the best indicator for this analysis, as these values are not proportionate to the population of a state. Additionally, there is a bias in terms of articles per capita being higher in states with smaller populations like Vermont, Maine, and Alaska. This suggests that states with lower population density may exhibit a relatively higher number of articles per capita, possibly due to various factors such as a strong local community of contributors or more prolific speakers of the English language or a focus on local topics.
 
 **What biases did you expect to find in the data (before you started working with it), and why?**
+
 I expected the highest quality articles to come from states with the largest number of residents, such as California or Washington. However, after the exercise, it was surprising to discover that the opposite is true. In fact, states like California, Arizona, Florida, and Massachusetts have the lowest quality articles per capita.
 A major bias that I've observed is that we are only accounting for articles in English, which is inherently biased. Populous regions like California have a much greater linguistic diversity, as more than half of their population speaks a language different from English, as mentioned on this [website](https://www.worldatlas.com/articles/the-most-spoken-languages-in-california.html).
 
 **What might your results suggest about (English) Wikipedia as a data source?**
+
 As mentioned above, I believe that using only English articles as a data source creates a significant bias. According to the [MPI Virginia](https://www.migrationpolicy.org/data/state-profiles/state/language/VA) website, only 29.4% of naturalized citizens and 50% of noncitizens speak English less than "very well." This data point alone explains why Virginia is at the top of the list for the lowest-quality articles. These data points also suggest that it is highly biased to rely solely on English articles for this exercise.
 Another anomaly is relying on ORES for the quality of the article because it is more biased toward the structure of the article rather than the quality of the content within it.
 
-**Can you think of a realistic data science research situation where using these data (to train a model, perform a hypothesis-driven research, or make business decisions) might create biased or misleading results, due to the inherent gaps and limitations of the data?**  
-The Medium article [Is GPT-3 Islamophobic?](https://towardsdatascience.com/is-gpt-3-islamophobic-be13c2c6954f) discusses how OpenAI's Western algorithm perpetuates orientalist power structures. The author discusses a similar context related to the limitations of text classifiers in online content. As examples, the author presents shocking revelations where GPT-3.5 generated disturbing texts when prompted with words such as "Muslims," "Islam," or "Middle East." The article concludes by emphasizing how powerful language models like GPT-3, trained on biased data, can exacerbate inequality within linguistic categories. It also highlights the potential for generating unjust results if deployed in an unfair world, considering the scale at which it currently operates and may operate in the future.
+**Can you think of a realistic data science research situation where using these data (to train a model, perform a hypothesis-driven research, or make business decisions) might create biased or misleading results, due to the inherent gaps and limitations of the data?**
+
+The Medium article [Is GPT-3 Islamophobic?](https://towardsdatascience.com/is-gpt-3-islamophobic-be13c2c6954f) discusses how OpenAI's Western algorithm perpetuates orientalist power structures. The author discusses a similar context related to the limitations of text classifiers in online content. As examples, the author presents shocking revelations where GPT-3.5 generated disturbing texts when prompted with words such as "Muslims", "Islam", or "Middle East". The article concludes by emphasizing how powerful language models like GPT-3, trained on biased data, can exacerbate inequality within linguistic categories. It also highlights the potential for generating unjust results if deployed in an unfair world, considering the scale at which it currently operates and may operate in the future.
 
 **How might a researcher supplement or transform this dataset to potentially correct for the limitations/biases you observed?**
-Numerous areas were found to be missing from the dataset, and these areas do not necessarily fit within defined states or regions. It would be valuable to obtain data for these omitted regions. Moreover, these regions could not be seamlessly integrated into any pre-established regional or divisional categories. As an illustration, the District of Columbia represents one such "area" that lacks a specific region or division assignment. However, upon closer examination of the population figures at the regional level, comparing the original "population_by_states_2022.csv" dataset with the one generated by the code (df_pop_division), a notable discrepancy was identified in the population count attributed to the 'South' region. The incongruity stems from the adoption of a specific regional division convention in the analysis, whereas an alternative convention could potentially include the "District of Columbia" within the 'South' region. Therefore, researchers must exercise their judgment and expertise in selecting the most appropriate convention to apply.
+
+Numerous areas were found to be missing from the dataset, and it would be valuable to obtain data for these omitted regions. Moreover, these regions could not be seamlessly integrated into any pre-established regional or divisional categories. As an illustration, the District of Columbia represents one such "area" that lacks a specific region or division assignment and so we excluded it from our analysis. However, upon closer examination of the population figures at the regional level, comparing the original **population_by_states_2022.csv** dataset with the one generated by the code (**df_pop_division**), a notable discrepancy was identified in the population count attributed to the 'South' region. The incongruity stems from the adoption of a specific regional division convention in the analysis, whereas an alternative convention could potentially include the "District of Columbia" within the 'South' region. Therefore, researchers must exercise their judgment and expertise in selecting the most appropriate convention to apply.
 
 ## Best practices for documentation
 - PEP 8 – Style Guide for Python Code. ([Reference link](https://peps.python.org/pep-0008/))
